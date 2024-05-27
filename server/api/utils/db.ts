@@ -1,16 +1,12 @@
 import mongoose, { ConnectOptions } from "mongoose";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const connectDB = async () => {
-  if (mongoose.connection.readyState >= 1) {
-    return;
-  }
-  return mongoose.connect(
-    process.env.MONGO_URL as string,
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    } as ConnectOptions
-  );
+  const mongoURI = process.env.MONGO_URI as string;
+
+  return await mongoose.connect(mongoURI);
 };
 
 export default connectDB;

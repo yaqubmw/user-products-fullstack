@@ -1,6 +1,6 @@
 import express from "express";
-import { auth } from "../middleware/auth";
 
+import { auth } from "../middleware/auth";
 import Product from "../models/Product";
 
 const router = express.Router();
@@ -26,11 +26,11 @@ router.get("/user", auth, async (req, res) => {
 });
 
 // create product (authenticated)
-router.post("/", auth, async (req, res) => {
-  const { title, price, description } = req.body;
-  const userId = req.body.user._id;
+router.post("/add", auth, async (req, res) => {
+  const { title, image, price, description } = req.body;
+  const userId = req.body.user.id;
   try {
-    const product = new Product({ title, price, description, userId });
+    const product = new Product({ title, image, price, description, userId });
     await product.save();
     res.status(201).json({ message: "Product created successfully!" });
   } catch (error) {
@@ -52,8 +52,8 @@ router.get("/:id", async (req, res) => {
 // update product (authenticated)
 router.put("/:id", auth, async (req, res) => {
   const { id } = req.params;
-  const { title, price, description } = req.body;
-  const userId = req.body.user._id;
+  const { title, image, price, description } = req.body;
+  const userId = req.body.user.id;
 
   const product = await Product.findById(id);
 
@@ -65,6 +65,7 @@ router.put("/:id", auth, async (req, res) => {
     try {
       const updatedProduct = await Product.findByIdAndUpdate(id, {
         title,
+        image,
         price,
         description,
       });
@@ -80,7 +81,7 @@ router.put("/:id", auth, async (req, res) => {
 // delete product (authenticated)
 router.delete("/:id", auth, async (req, res) => {
   const { id } = req.params;
-  const userId = req.body.user._id;
+  const userId = req.body.user.id;
   const product = await Product.findById(id);
   if (!product) {
     return res.status(404).json({ message: "Product not found" });
