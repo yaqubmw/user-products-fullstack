@@ -24,7 +24,7 @@ export const Input: React.FC<InputProps> = ({
       id={id}
       name={name}
       type={type}
-      className={`block border border-gray-300 text-sm rounded-md rong-0 focus:ring-0 focus:border-indigo-200 ${width}`}
+      className={`block border border-gray-300 text-sm rounded-md rong-0 focus:ring-0 focus:border-indigo-500 focus:outline-none py-1 px-2 transition-all duration-200 ${width}`}
       placeholder={placeholder}
     />
   );

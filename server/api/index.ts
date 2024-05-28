@@ -1,10 +1,20 @@
 import express, { Application } from "express";
+import cors from "cors";
 
 import connectDB from "./utils/db";
 import authRoutes from "./routes/auth";
 import productRoutes from "./routes/products";
 
 const app: Application = express();
+
+// cors
+app.use(
+  cors({
+    origin: process.env.CLIENT_URL as string,
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
 
 // Middleware to parse JSON bodies
 app.use(express.json());

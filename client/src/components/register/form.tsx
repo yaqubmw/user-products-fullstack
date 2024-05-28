@@ -35,9 +35,10 @@ export const RegisterForm: React.FC = () => {
   } = methods;
 
   const onSubmit = async (data: RegisterFormProps) => {
+    console.log(data);
     const { name, email, password, gender } = data;
     try {
-      await axios.post("/api/auth/register", {
+      await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/auth/register`, {
         name,
         email,
         password,
