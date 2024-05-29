@@ -14,7 +14,7 @@ interface CardProps {
 
 const Card: React.FC<CardProps> = ({ product }) => {
   return (
-    <div className="flex flex-col items-center justify-center space-y-2 bg-white rounded-lg shadow-md w-full p-4">
+    <div className="flex flex-col items-center justify-center space-y-2 bg-white rounded-lg shadow-md w-full p-4 border border-indigo-200 hover:shadow-lg transition-shadow">
       <Image
         src={
           product.image

@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { useForm, FormProvider } from "react-hook-form";
 import { useRouter } from "next/router";
 import axios from "axios";
@@ -8,6 +9,7 @@ import { Select } from "../react-hook-form/select";
 import { Wrapper } from "../react-hook-form/wrapper";
 import { ErrorMessage } from "../react-hook-form/error-message";
 import Button from "../ui/button";
+import Link from "next/link";
 
 interface RegisterFormProps {
   name: string;
@@ -162,6 +164,14 @@ export const RegisterForm: React.FC = () => {
             <Button type="submit" className="md:col-span-10 mt-8">
               Register
             </Button>
+            <div className="md:col-span-10 text-sm inline-flex items-center pt-2">
+              <p>
+                Already have an account?{" "}
+                <span className="text-indigo-600 no-underline hover:underline">
+                  <Link href={"/login"}>Login.</Link>
+                </span>
+              </p>
+            </div>
           </div>
         </form>
       </FormProvider>

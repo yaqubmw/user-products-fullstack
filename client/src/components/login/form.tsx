@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { useEffect } from "react";
 import { useForm, FormProvider } from "react-hook-form";
 import { useRouter } from "next/router";
@@ -11,6 +12,7 @@ import { Wrapper } from "../react-hook-form/wrapper";
 import { ErrorMessage } from "../react-hook-form/error-message";
 import Button from "../ui/button";
 import { useAuth } from "../../utils/auth";
+import Link from "next/link";
 
 interface LoginFormProps {
   email: string;
@@ -57,7 +59,7 @@ export const LoginForm: React.FC = () => {
 
       dispatch(setUser({ token, userInfo }));
 
-      router.push("/dashboard");
+      window.location.href = "/dashboard";
     } catch (error) {
       console.log(error);
     }
@@ -115,6 +117,14 @@ export const LoginForm: React.FC = () => {
             <Button type="submit" className="md:col-span-10 mt-8">
               Login
             </Button>
+            <div className="md:col-span-10 text-sm inline-flex items-center pt-2">
+              <p>
+                Don't have an account?{" "}
+                <span className="text-indigo-600 no-underline hover:underline">
+                  <Link href={"/register"}>Register now.</Link>
+                </span>
+              </p>
+            </div>
           </div>
         </form>
       </FormProvider>
