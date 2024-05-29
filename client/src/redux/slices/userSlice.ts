@@ -25,13 +25,13 @@ export const userSlice = createSlice({
       state.token = action.payload.token;
       state.userInfo = action.payload.userInfo;
     },
-    logout(state) {
+    clearUser(state) {
       state.token = null;
       state.userInfo = null;
     },
   },
 });
 
-export const { setUser, logout } = userSlice.actions;
+export const { setUser, clearUser } = userSlice.actions;
 
 export default userSlice.reducer;

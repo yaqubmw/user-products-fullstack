@@ -37,10 +37,12 @@ router.post("/login", async (req, res) => {
     }
 
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET as string, {
-      expiresIn: "1h",
+      expiresIn: 60 * 2,
     });
 
-    res.status(200).json({ message: "User logged in successfully!", token });
+    res
+      .status(200)
+      .json({ message: "User logged in successfully!", token, user });
   } catch (error) {
     res.status(500).json({ message: "Internal server error" });
   }
