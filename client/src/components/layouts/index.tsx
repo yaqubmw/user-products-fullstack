@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import CenteredLayout from "./centered-layout";
 import Sidebar from "./sidebar";
+import { DefaultNav } from "./default-nav";
 
 interface layoutProps {
   children: React.ReactNode;
@@ -17,10 +18,11 @@ const Layout: React.FC<layoutProps> = ({ children }) => {
       return <CenteredLayout>{children}</CenteredLayout>;
 
     case "/dashboard":
+    case "/dashboard/create":
       return <Sidebar>{children}</Sidebar>;
 
     default:
-      return <>{children}</>;
+      return <DefaultNav>{children}</DefaultNav>;
   }
 };
 

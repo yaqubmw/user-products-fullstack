@@ -61,20 +61,20 @@ export const RegisterForm: React.FC = () => {
           <div className="grid grid-cols-1 gap-2 md:grid-cols-10">
             {/* Name Input */}
             <Wrapper className="md:col-span-10">
-              <Label id="name">Nama</Label>
+              <Label id="name">Name</Label>
               <Input
                 id="name"
                 name="name"
                 type="text"
                 rules={{
-                  required: "Nama tidak boleh kosong",
+                  required: "Name is required",
                   minLength: {
                     value: 3,
-                    message: "Name harus paling sedikit 3 karakter",
+                    message: "Name must be at least 3 characters long",
                   },
                   pattern: {
                     value: /^[A-Za-z\s]+$/,
-                    message: "Nama hanya boleh berupa huruf dan spasi",
+                    message: "Name must only contain letters and spaces",
                   },
                 }}
               />
@@ -91,10 +91,10 @@ export const RegisterForm: React.FC = () => {
                 name="email"
                 type="email"
                 rules={{
-                  required: "Email tidak boleh kosong",
+                  required: "Email is required",
                   pattern: {
                     value: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
-                    message: "Email tidak valid",
+                    message: "Email is not valid",
                   },
                 }}
               />
@@ -111,10 +111,10 @@ export const RegisterForm: React.FC = () => {
                 name="password"
                 type="password"
                 rules={{
-                  required: "Silahkan masukkan password",
+                  required: "Password is required",
                   minLength: {
                     value: 8,
-                    message: "Password harus paling sedikit 8 karakter",
+                    message: "Password must be at least 8 characters long",
                   },
                 }}
               />
@@ -125,16 +125,16 @@ export const RegisterForm: React.FC = () => {
 
             {/* Konfirmaasi Password Input */}
             <Wrapper className="md:col-span-10">
-              <Label id="password">Konfirmasi Password</Label>
+              <Label id="password">Confirm Password</Label>
               <Input
                 id="confirm-password"
                 name="confirmPassword"
                 type="password"
                 rules={{
-                  required: "Silahkan masukkan ulang password",
+                  required: "Please confirm your password",
                   validate: (value: string) =>
                     value === methods.getValues("password") ||
-                    "Passwords tidak cocok",
+                    "The passwords do not match",
                 }}
               />
               {errors?.confirmPassword?.message && (
@@ -148,12 +148,12 @@ export const RegisterForm: React.FC = () => {
               <Select
                 id="gender"
                 name="gender"
-                placeholder="Pilih jenis kelamin"
+                placeholder="Gender"
                 options={[
-                  { key: "male", value: "Laki-laki" },
-                  { key: "female", value: "Perempuan" },
+                  { key: "male", value: "Male" },
+                  { key: "female", value: "Female" },
                 ]}
-                rules={{ required: "Jenis kelamin harus dipilih" }}
+                rules={{ required: "Gender is required" }}
               />
               {errors?.gender?.message && (
                 <ErrorMessage>{errors.gender.message}</ErrorMessage>

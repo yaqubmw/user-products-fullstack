@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { PriceTag } from "./price-tag";
 
 interface ProductProps {
   _id: string;
@@ -27,7 +28,7 @@ const Card: React.FC<CardProps> = ({ product }) => {
         className="object-cover w-[300px] h-[200px]"
       />
       <h3 className="text-xl font-medium text-pretty">{product.title}</h3>
-      <p className="text-sm text-pretty">${product.price}</p>
+      <p className="text-sm text-pretty"><PriceTag price={product.price} className="text-sm" /></p>
     </div>
   );
 };

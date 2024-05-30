@@ -53,7 +53,7 @@ const UserProducts: React.FC = () => {
   const products = useSelector((state: RootState) => state.products.products);
 
   const handleEdit = (id: string) => {
-    router.push(`/products/edit/${id}`);
+    router.push(`/dashboard/update?id=${id}`);
   };
 
   const handleDelete = async (id: string) => {
@@ -89,6 +89,9 @@ const UserProducts: React.FC = () => {
   return (
     <div className="w-full flex flex-col space-y-4 rounded border border-indigo-200 p-4 shadow">
       <H2TitlePage className="pb-4">Your Products</H2TitlePage>
+      <p className="text-xs font-light text-green-600">
+        * Click title to view details
+      </p>
       <div className="flex flex-col items-center w-full pt-4">
         {products.length > 0 ? (
           products.map((product) => (

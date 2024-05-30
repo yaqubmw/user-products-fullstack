@@ -1,32 +1,32 @@
 import { useFormContext } from "react-hook-form";
 
-export type InputProps = {
+export type TextareaProps = {
   id: string;
   name: string;
-  type?: string;
-  defaultValue?: string | number;
+  defaultValue?: string;
+  rows: number;
   rules?: Record<string, any>;
   placeholder?: string;
   width?: string;
 };
 
-export const Input: React.FC<InputProps> = ({
+export const Textarea: React.FC<TextareaProps> = ({
   id,
   name,
-  type,
   defaultValue,
+  rows,
   rules = {},
   placeholder = "",
   width = "w-full",
 }) => {
   const { register } = useFormContext();
   return (
-    <input
+    <textarea
       {...register(name, rules)}
       id={id}
       name={name}
-      type={type}
       defaultValue={defaultValue}
+      rows={rows}
       className={`block border border-gray-300 text-sm rounded-md rong-0 focus:ring-0 focus:border-indigo-500 focus:outline-none py-1 px-2 transition-all duration-200 ${width}`}
       placeholder={placeholder}
     />

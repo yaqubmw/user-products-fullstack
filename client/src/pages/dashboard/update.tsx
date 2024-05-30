@@ -9,7 +9,7 @@ import TitlePage from "../../components/ui/title-page";
 import PageLayout from "../../components/layouts/page-layout";
 import CreatePostForm from "../../components/dashboard/create-form";
 
-const CreatePostPage: React.FC = () => {
+const UpdatePostPage: React.FC = () => {
   const router = useRouter();
   const isAuthenticated = useAuth();
 
@@ -33,4 +33,4 @@ const CreatePostPage: React.FC = () => {
   );
 };
 
-export default CreatePostPage;
+export default UpdatePostPage;

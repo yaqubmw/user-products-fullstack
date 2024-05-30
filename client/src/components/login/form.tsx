@@ -81,7 +81,7 @@ export const LoginForm: React.FC = () => {
                 name="email"
                 type="email"
                 rules={{
-                  required: "Email tidak boleh kosong",
+                  required: "Please enter your email",
                   pattern: {
                     value: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
                     message: "Email tidak valid",
@@ -101,10 +101,10 @@ export const LoginForm: React.FC = () => {
                 name="password"
                 type="password"
                 rules={{
-                  required: "Silahkan masukkan password",
+                  required: "Please enter your password",
                   minLength: {
                     value: 8,
-                    message: "Password harus paling sedikit 8 karakter",
+                    message: "Password must be at least 8 characters",
                   },
                 }}
               />
